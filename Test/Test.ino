@@ -134,6 +134,7 @@ void setup()
 
     NimBLEAdvertising *pAdvertising = pServer->getAdvertising();
     pAdvertising->addServiceUUID(pBatteryService->getUUID());
+    //pAdvertising->setAppearance(512); // https://developer.nordicsemi.com/nRF5_SDK/nRF51_SDK_v4.x.x/doc/html/group___b_l_e___a_p_p_e_a_r_a_n_c_e_s.html
     pAdvertising->start();
 
     ble_beacon.start(5000, AsyncDelay::units_t::MILLIS);
