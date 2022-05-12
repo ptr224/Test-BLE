@@ -1,8 +1,8 @@
 #include <WiFi.h>
 #include <NimBLEDevice.h>
 #include <TFT_eSPI.h>
-#include <qrcode.h>
 #include <AsyncDelay.h>
+#include <qrcode.h>
 
 #if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
 #error Bluetooth is not enabled! Please run `make menuconfig` to and enable it
