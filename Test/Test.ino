@@ -114,7 +114,6 @@ void setup()
     // Configura BLE
 
     NimBLEDevice::init(deviceID);
-    //NimBLEDevice::setEncryptionLevel(esp_ble_sec_act_t::ESP_BLE_SEC_ENCRYPT);
     //NimBLEDevice::setPower(esp_power_level_t::ESP_PWR_LVL_P7);
 
     // Create the BLE Server
@@ -126,10 +125,9 @@ void setup()
 
     NimBLEService *pBatteryService = pServer->createService(NimBLEUUID((uint16_t)0x180F));
     pBatteryLevelCharacteristic = pBatteryService->createCharacteristic(NimBLEUUID((uint16_t)0x2A19), NIMBLE_PROPERTY::READ | NIMBLE_PROPERTY::NOTIFY);
-    pBatteryLevelCharacteristic->addDescriptor(new NimBLE2904());
-    NimBLEDescriptor *pBatteryLevelDescriptor = pBatteryLevelCharacteristic->createDescriptor(NimBLEUUID((uint16_t)0x2901));
+    NimBLEDescriptor *pBatteryLevelDescriptor = pBatteryLevelCharacteristic->createDescriptor(NimBLEUUID((uint16_t)0x2901), NIMBLE_PROPERTY::READ);
     pBatteryLevelDescriptor->setValue("Percentage 0 - 100");
-
+    
     pBatteryService->start();
 
     // Start advertising
